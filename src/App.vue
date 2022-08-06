@@ -1,16 +1,20 @@
 <template>
   <div id="app">
     <div class="container">
-      <div v-for="(_, i) in range" :class="['item', selectedIndex == i ? 'item-select' : '']" @click="selectedIndex = i">
-        <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtC?ver=b327" alt="demo" />
+      <div
+        v-for="(_, i) in range"
+        :class="['item', selectedIndex == i ? 'item-select' : '', i === 2 ? 'img-middle' : i < 2 ? 'img-left' : 'img-right']"
+        @click="selectedIndex = i"
+      >
         <div :class="['main-text', selectedIndex == i ? 'main-text-select' : '']">
-          <div>Hello World</div>
+          <div class="title">Hello</div>
           <div :class="['item-text', selectedIndex == i ? 'item-text-select' : '']">
             <span style="width: 100px">他们虽然都可以做出动画效果</span>
           </div>
         </div>
       </div>
     </div>
+    <button @click="selectedIndex = 5">Cancle</button>
   </div>
 </template>
 
@@ -32,14 +36,13 @@ const range = [1, 2, 3, 4, 5];
 }
 
 .item {
-  overflow: hidden;
-
-  position: relative;
   height: 180px;
   width: 20%;
-  background-color: aqua;
   margin: 0 10px;
-
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  overflow: hidden;
   transition: all 0.65s;
 }
 
@@ -47,36 +50,56 @@ const range = [1, 2, 3, 4, 5];
   width: 65%;
 }
 
-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
+.img-left {
+  background-image: url("https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtC?ver=b327");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: cover;
+}
+
+.img-middle {
+  background-image: url("https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtC?ver=b327");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.img-right {
+  background-image: url("https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtC?ver=b327");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: auto 100%;
 }
 
 .main-text {
-  position: absolute;
-  left: 30px;
-  bottom: -38px;
+  position: relative;
+  bottom: -10px;
+  width: 100%;
+  padding: 0 20px;
   color: white;
   transition: all 0.55s;
 }
 
 .main-text-select {
-  bottom: 10px;
+  bottom: 20px;
+}
+
+.title {
+  display: inline-block;
+  height: 20px;
+  width: 300px;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
 .item-text {
-  position: relative;
   display: inline-block;
-  height: 10px;
-  width: 100px;
+  width: 300px;
   opacity: 0;
   transition: all 0.65s;
 }
 
 .item-text-select {
-  /* height: 100px; */
   opacity: 1;
 }
 </style>
