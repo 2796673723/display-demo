@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <div class="container">
-      <div v-for="(_, i) in range" :class="['item', selectedIndex == i ? 'item-select' : '']" @click="selectedIndex = i">
-        <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtC?ver=b327" alt="demo" />
+      <div v-for="(_, i) in range" :class="['item', selectedIndex == i ? 'item-select' : '']"
+           @click="selectedIndex = i">
+        <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtC?ver=b327"
+             alt="demo"/>
         <div :class="['main-text', selectedIndex == i ? 'main-text-select' : '']">
           <div>Hello World</div>
           <div :class="['item-text', selectedIndex == i ? 'item-text-select' : '']">
@@ -15,9 +17,12 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import {onMounted, ref} from "vue";
+
 const selectedIndex = ref(-1);
 const range = [1, 2, 3, 4, 5];
+
+onMounted(() => console.log("mounted this component"))
 </script>
 
 <style>
