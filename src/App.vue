@@ -1,11 +1,13 @@
 <template>
   <div id="app">
+    <button @click="selectedIndex=0">Cancel</button>
     <div class="container">
-      <div v-for="(_, i) in range" :class="['item', selectedIndex == i ? 'item-select' : '']" @click="selectedIndex = i">
-        <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtC?ver=b327" alt="demo" />
-        <div :class="['main-text', selectedIndex == i ? 'main-text-select' : '']">
+      <div v-for="(i) in range" :class="['item', selectedIndex === i ? 'item-select' : '']" @click="selectedIndex = i">
+        <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtC?ver=b327"
+             alt="demo"/>
+        <div :class="['main-text', selectedIndex === i ? 'main-text-select' : '']">
           <div>Hello World</div>
-          <div :class="['item-text', selectedIndex == i ? 'item-text-select' : '']">
+          <div :class="['item-text', selectedIndex === i ? 'item-text-select' : '']">
             <span style="width: 100px">他们虽然都可以做出动画效果</span>
           </div>
         </div>
@@ -15,7 +17,8 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import {ref} from "vue";
+
 const selectedIndex = ref(-1);
 const range = [1, 2, 3, 4, 5];
 </script>
