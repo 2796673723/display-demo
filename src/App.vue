@@ -1,10 +1,11 @@
 <template>
   <div id="app">
+    <button @click="selectedIndex = 5">Cancel</button>
     <div class="container">
       <div
-        v-for="(_, i) in range"
-        :class="['item', selectedIndex == i ? 'item-select' : '', i === 2 ? 'img-middle' : i < 2 ? 'img-left' : 'img-right']"
-        @click="selectedIndex = i"
+          v-for="(_, i) in range"
+          :class="['item', selectedIndex == i ? 'item-select' : '', i === 2 ? 'img-middle' : i < 2 ? 'img-left' : 'img-right']"
+          @click="selectedIndex = i"
       >
         <div :class="['main-text', selectedIndex == i ? 'main-text-select' : '']">
           <div class="title">Hello</div>
@@ -14,12 +15,12 @@
         </div>
       </div>
     </div>
-    <button @click="selectedIndex = 5">Cancle</button>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import {ref} from "vue";
+
 const selectedIndex = ref(-1);
 const range = [1, 2, 3, 4, 5];
 </script>
